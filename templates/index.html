@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator Service</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Calculator Service</h1>
+            <p>A modern calculator with API endpoints</p>
+        </header>
+        
+        <main>
+            <div class="calculator">
+                <div class="display">
+                    <input type="text" id="display" readonly value="0" tabindex="-1">
+                    <div class="expression" id="expression"></div>
+                </div>
+                
+                <div class="buttons">
+                    <button class="btn btn-secondary" onclick="clearAll()" data-key="Escape">AC</button>
+                    <button class="btn btn-secondary" onclick="clearEntry()" data-key="Delete">CE</button>
+                    <button class="btn btn-secondary" onclick="backspace()" data-key="Backspace">⌫</button>
+                    <button class="btn btn-operator" onclick="appendOperator('/')" data-key="/">/</button>
+                    
+                    <button class="btn btn-number" onclick="appendNumber('7')" data-key="7">7</button>
+                    <button class="btn btn-number" onclick="appendNumber('8')" data-key="8">8</button>
+                    <button class="btn btn-number" onclick="appendNumber('9')" data-key="9">9</button>
+                    <button class="btn btn-operator" onclick="appendOperator('*')" data-key="*">×</button>
+                    
+                    <button class="btn btn-number" onclick="appendNumber('4')" data-key="4">4</button>
+                    <button class="btn btn-number" onclick="appendNumber('5')" data-key="5">5</button>
+                    <button class="btn btn-number" onclick="appendNumber('6')" data-key="6">6</button>
+                    <button class="btn btn-operator" onclick="appendOperator('-')" data-key="-">−</button>
+                    
+                    <button class="btn btn-number" onclick="appendNumber('1')" data-key="1">1</button>
+                    <button class="btn btn-number" onclick="appendNumber('2')" data-key="2">2</button>
+                    <button class="btn btn-number" onclick="appendNumber('3')" data-key="3">3</button>
+                    <button class="btn btn-operator" onclick="appendOperator('+')" data-key="+">+</button>
+                    
+                    <button class="btn btn-number btn-zero" onclick="appendNumber('0')" data-key="0">0</button>
+                    <button class="btn btn-number" onclick="appendDecimal()" data-key=".">.</button>
+                    <button class="btn btn-equals" onclick="calculate()" data-key="Enter">=</button>
+                </div>
+            </div>
+            
+            <div class="api-info">
+                <h3>API Endpoints</h3>
+                <div class="endpoints">
+                    <div class="endpoint">
+                        <strong>GET /add?a=5&b=3</strong>
+                        <span>Addition</span>
+                    </div>
+                    <div class="endpoint">
+                        <strong>GET /subtract?a=5&b=3</strong>
+                        <span>Subtraction</span>
+                    </div>
+                    <div class="endpoint">
+                        <strong>GET /multiply?a=5&b=3</strong>
+                        <span>Multiplication</span>
+                    </div>
+                    <div class="endpoint">
+                        <strong>GET /divide?a=10&b=2</strong>
+                        <span>Division</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/calculator.js') }}"></script>
+</body>
+</html>
